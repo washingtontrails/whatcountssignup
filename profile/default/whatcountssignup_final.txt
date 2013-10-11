@@ -1,0 +1,1 @@
+Hook to test for initial install.

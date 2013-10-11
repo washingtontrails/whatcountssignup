@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="whatcounts_final"
+               version="20070101-01"
+               handler="Products.whatcountssignup.setuphandlers.uninstallSteps"
+               title="Final WhatCounts Config">
+   <dependency step="propertiestool"/>
+    Uninstall WhatCounts Signup
+  </import-step>
+</import-steps>

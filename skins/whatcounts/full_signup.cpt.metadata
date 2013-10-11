@@ -1,0 +1,9 @@
+[default]
+title=Almost there...
+
+[validators]
+validators=isValidContact
+
+[actions]
+action.success=traverse_to:string:process_signup
+action.failure=traverse_to:string:full_signup

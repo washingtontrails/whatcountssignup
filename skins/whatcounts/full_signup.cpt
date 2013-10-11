@@ -1,0 +1,190 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+	  lang="en-US" i18n:domain="onenorthwest"
+	  metal:use-macro="here/main_template/macros/master">
+  <head>
+    <title i18n:translate="heading_thanks">Thanks for your interest in subscribing!</title>
+  </head>
+
+  <body>
+    <div metal:fill-slot="main"
+		 tal:define="errors options/state/getErrors;">
+
+    <tal:main-macro metal:define-macro="main"> 
+
+  <h1 class="documentFirstHeading"
+      i18n:translate="heading_thanks">Thanks for your interest in subscribing!</h1>
+  <p i18n:translate="text_almost_finished">
+    You're almost finished signing up for our email newsletter.  We only require
+    a little more information, but we would love it if you volunteered your full
+    contact information so that we know best how to communicate with you.
+  </p>
+
+  <form method="POST"
+        tal:attributes="action string:${here/absolute_url}/${template/id};"
+        tal:define="slid portal_properties/email_signup_properties/slid | nothing;"
+    >
+
+        <div class="portalMessage"
+             tal:condition="not: slid">
+             This newsletter signup hasn't been fully configured yet, so it is 
+             not enabled.  Please email the web address of this page to the
+             site's webmaster and notify her of this message.
+        </div>
+
+            <table class="contactForm">
+                <tr class="field"
+                    tal:define="error_first errors/contact_first|nothing;"
+                    tal:attributes="class python:test(error_first, 'field error', 'field')">
+                        <td tal:content="error_first" tal:attributes="colspan python:2">Error</td>
+                </tr>
+                <tr>
+                    <td class="leftcell">
+                        <span i18n:translate="field_first_name">First Name</span>
+                        <span i18n:translate="field_required">(required)</span>: 
+                    </td>
+                    <td class="rightcell">
+                         <input type="text" name="contact_first"
+                            tal:attributes="value request/contact_first|nothing" />
+                    </td>
+                </tr>
+                <tr class="field" 
+                    tal:define="error_last errors/contact_last|nothing;" 
+                    tal:attributes="class python:test(error_last, 'field error', 'field')"> 
+                         <td tal:content="error_last" tal:attributes="colspan python:2">Error</td> 
+                </tr> 
+                <tr> 
+                    <td class="leftcell"> 
+                        <span i18n:translate="field_last_name">Last Name</span>
+                        <span i18n:translate="field_required">(required)</span>: 
+                    </td>	 
+                    <td class="rightcell"> 
+                        <input type="text" name="contact_last" 
+                        tal:attributes="value request/contact_last|nothing" /> 
+                    </td> 
+                </tr> 
+    
+                <tr class="field" 
+                    tal:define="error_email errors/contact_email|nothing;" 
+                    tal:attributes="class python:test(error_email, 'field error', 'field')"> 
+                         <td tal:content="error_email" tal:attributes="colspan python:2">Error</td> 
+                </tr> 
+                <tr> 
+                    <td class="leftcell"> 
+                        <span i18n:translate="field_email_name">Email Address</span>
+                        <span i18n:translate="field_required">(required)</span>: 
+                    </td>	 
+                    <td class="rightcell"> 
+                         <input type="text" name="contact_email" 
+                            tal:attributes="value request/contact_email|request/contact_email|nothing" /> 
+                    </td> 
+                </tr> 
+                <tr class="field" 
+                    tal:define="error_company errors/contact_company|nothing;" 
+                    tal:attributes="class python:test(error_company, 'field error', 'field')"> 
+                         <td tal:content="error_company" tal:attributes="colspan python:2">Error</td> 
+                </tr> 
+                <tr>
+                    <td class="leftcell">
+                        <span i18n:translate="field_organization_name">Organization Name</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_company"
+                            tal:attributes="value request/contact_company|nothing" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="leftcell">
+                        <span i18n:translate="field_phone_number">Phone Number</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_phone"
+                            tal:attributes="value request/contact_phone|nothing" />
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="leftcell">
+    				    <span i18n:translate="field_address">Address</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_address_1"
+                            tal:attributes="value request/contact_address_1|nothing" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="leftcell">
+    				    <span i18n:translate="field_address_2">Address 2</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_address_2"
+                            tal:attributes="value request/contact_address_2|nothing" />
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="leftcell">
+                        <span i18n:translate="field_city">City</span>:
+                    </td>	
+                    <td class="rightcell">
+                     <input type="text" name="contact_city"
+                            tal:attributes="value request/contact_city|nothing" />
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="leftcell">
+    				    <span i18n:translate="field_state">State</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_state"
+                            tal:attributes="value request/contact_state|nothing" />
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="leftcell">
+    				    <span i18n:translate="field_zip">Zip</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_zip"
+                            tal:attributes="value request/contact_zip|nothing" />
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td class="leftcell">
+                        <span i18n:translate="field_country">Country</span>:
+                    </td>	
+                    <td class="rightcell">
+                         <input type="text" name="contact_country"
+                            tal:attributes="value request/contact_country|nothing" />
+                    </td>
+                </tr>
+    
+        </table>
+      <input type="hidden" name="form.submitted" value="1" />
+      <input type="hidden" name="contact_goto" 
+			 tal:attributes="value string:${context/absolute_url}/subscribed/" />
+      <input type="hidden" name="contact_format" value="html" />
+      <input type="hidden" name="contact_cmd" value="subscribe" />
+      <input type="hidden" name="contact_slid"
+             tal:attributes="value slid" />
+      
+        <p>
+            <input class="context"
+                   type="submit"
+                   name="form.button.Submit"
+                   value="Submit"
+                   tal:condition="slid"
+                   i18n:attributes="value button_submit" />
+        </p>
+
+
+	</form>
+
+
+    </tal:main-macro>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<tal:call define="dummy python: request.RESPONSE.setHeader('content-type', 
+														   'text/html;; charset=utf-8')" /> 
+
+<metal:page define-macro="newsletter_view">
+<metal:block use-macro="here/global_defines/macros/defines" />
+
+<tal:comment replace="nothing">
+  This template is to be used only for WhatCounts' Smart Gets.
+  It returns the Rich Text field of a page.
+</tal:comment>
+
+<tal:block
+     define="base_url here/aq_parent/absolute_url"
+     condition="here/CookedBody | nothing" 
+     replace="structure python:context.portal_transforms.convert('WebToWhatCountsWeb',here.CookedBody(),base=base_url)">
+             Body goes here, if it exists
+</tal:block>
+</metal:page>
